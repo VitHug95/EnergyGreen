@@ -12,18 +12,20 @@ public class Registro {
     
     private int kwh;
     private String mes;
+    private String ano;
     private String regiao;
     private int contaBruta;
     private int contaDesconto;
     private int economia;
 
-    public Registro(int kwh, String mes, String regiao, int contaBruta, int contaDesconto, int economia) {
+    public Registro(int kwh, String mes, String regiao, int contaBruta, int contaDesconto, int economia, String ano) {
         this.kwh = kwh;
         this.mes = mes;
         this.regiao = regiao;
         this.contaBruta = contaBruta;
         this.contaDesconto = contaDesconto;
         this.economia = economia;
+        this.ano = ano;
     }
 
     public int getKwh() {
@@ -32,6 +34,14 @@ public class Registro {
 
     public String getMes() {
         return mes;
+    }
+
+    public void setAno(String ano) {
+        this.ano = ano;
+    }
+
+    public String getAno() {
+        return ano;
     }
 
     public String getRegiao() {

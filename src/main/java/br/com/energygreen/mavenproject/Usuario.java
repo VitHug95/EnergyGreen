@@ -18,20 +18,20 @@ public class Usuario {
     private String senha;
     
        public Usuario(String nome, String cpf, String senha, String email, String telefone, String usertype) {
-        this.nome = nome;
         this.cpf = cpf;
+        this.nome = nome;
         this.senha = senha;
         this.email = email;
         this.telefone = telefone;
         this.usertype = usertype;
     }
-
-    public String getNome() {
-        return nome;
-    }
-
+    
     public String getCpf() {
         return cpf;
+    }
+    
+    public String getNome() {
+        return nome;
     }
 
     public String getSenha() {
@@ -49,13 +49,13 @@ public class Usuario {
     public String getUsertype() {
         return usertype;
     }
+    
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public void setSenha(String senha) {

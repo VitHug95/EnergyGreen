@@ -42,21 +42,21 @@ public class telaRegistro extends javax.swing.JFrame {
         jTextArea4 = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtKwh = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbxRegiao = new javax.swing.JComboBox<>();
         jButton5 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         valorConta = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        txtAno = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         valorEconomia = new javax.swing.JTextField();
         valorDesconto = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cbxMes = new javax.swing.JComboBox<>();
 
         jTextField1.setText("jTextField1");
 
@@ -82,9 +82,9 @@ public class telaRegistro extends javax.swing.JFrame {
 
         jLabel1.setText("Insira o KWh");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtKwh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtKwhActionPerformed(evt);
             }
         });
 
@@ -92,10 +92,10 @@ public class telaRegistro extends javax.swing.JFrame {
 
         jLabel8.setText("Insira região");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione a região", "São Paulo", "Rio de Janeiro", "Belo Horizonte", "Vitória" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cbxRegiao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione a região", "São Paulo", "Rio de Janeiro", "Belo Horizonte", "Vitória" }));
+        cbxRegiao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cbxRegiaoActionPerformed(evt);
             }
         });
 
@@ -119,9 +119,9 @@ public class telaRegistro extends javax.swing.JFrame {
             }
         });
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        txtAno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                txtAnoActionPerformed(evt);
             }
         });
 
@@ -145,10 +145,10 @@ public class telaRegistro extends javax.swing.JFrame {
 
         jLabel11.setText("Valor com Economia");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um mês", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        cbxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um mês", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
+        cbxMes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                cbxMesActionPerformed(evt);
             }
         });
 
@@ -159,7 +159,7 @@ public class telaRegistro extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel11)
@@ -173,31 +173,34 @@ public class telaRegistro extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(valorConta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(valorEconomia, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbxRegiao, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton5)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(191, 191, 191))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(241, 241, 241))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox2, 0, 146, Short.MAX_VALUE)
-                            .addComponent(jTextField2))
+                            .addComponent(txtKwh, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                            .addComponent(cbxMes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(138, 138, 138))))
+                        .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(138, 138, 138))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(191, 191, 191))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(241, 241, 241))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,17 +214,17 @@ public class telaRegistro extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtKwh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel5)
+                        .addComponent(cbxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxRegiao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
@@ -245,19 +248,35 @@ public class telaRegistro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtKwhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKwhActionPerformed
         // TODO add your handling code he
                 
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtKwhActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        String selecionarOpcao = jComboBox1.getSelectedItem().toString();
+        String selecionarOpcao = cbxRegiao.getSelectedItem().toString();
         double fator = 0;
-        if(selecionarOpcao.isEmpty()){
+        
+      if (txtKwh.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Digite um valor válido para KWh.");
+        return; // Encerrar o método sem continuar o cálculo
+        }
+      
+      if (cbxMes.getSelectedIndex()== 0) {
+        JOptionPane.showMessageDialog(null, "Insira um mês.");
+        return; // Encerrar o método sem continuar o cálculo
+        }
+      
+      if (cbxRegiao.getSelectedIndex()== 0) {
+        JOptionPane.showMessageDialog(null, "Insira uma região.");
+        return; // Encerrar o método sem continuar o cálculo
+        }
+      
+      if(selecionarOpcao.isEmpty()){
             JOptionPane.showMessageDialog(null, "Selecionar Opcao válida"
                     + "(Sao Paulo, Rio de Janeiro, Belo Horizonte ou Vitória)");
         } else {
-        switch (jComboBox1.getSelectedItem().toString()){
+        switch (cbxRegiao.getSelectedItem().toString()){
             case "São Paulo" -> fator = 0.2;
             case "Rio de Janeiro" -> fator = 0.3;
             case "Belo Horizonte" -> fator = 0.4;
@@ -266,18 +285,22 @@ public class telaRegistro extends javax.swing.JFrame {
         }
         
         try {       
-        calculoConversao a = new calculoConversao(Double.parseDouble(jTextField2.getText()), fator);
+        calculoConversao a = new calculoConversao(Double.parseDouble(txtKwh.getText()), fator);
         double b = a.calcularEconomia();
         valorEconomia.setText(String.format("R$ %.2f",b));
         } catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(null, "Digite um valor válido para KWh."); 
+            JOptionPane.showMessageDialog(null, "Digite um valor válido para KWh.");
+            
+        //Registro novoRegistro = new Registro(Integer.parseInt(txtKwh.getText()), cbxRegiao.getSelectedItem().toString(), txtAno.getText(), cbxRegiao.getSelectedItem().toString());
+        //registroRepository.addRegistro(RegistroRepository);              
+            
         }
         
-        calculoConversao calculo = new calculoConversao(Double.parseDouble(jTextField2.getText()), fator);
+        calculoConversao calculo = new calculoConversao(Double.parseDouble(txtKwh.getText()), fator);
         double tarifaComum = calculo.calcularTarifaComum();
         valorConta.setText(String.format("R$ %.2f",tarifaComum));
         
-        calculoConversao desconto = new calculoConversao (Double.parseDouble(jTextField2.getText()), fator);
+        calculoConversao desconto = new calculoConversao (Double.parseDouble(txtKwh.getText()), fator);
         double tarifaDesconto = desconto.calculoConversao();
         valorDesconto.setText(String.format("R$ %.2f",tarifaDesconto));
         
@@ -288,17 +311,17 @@ public class telaRegistro extends javax.swing.JFrame {
         new telaCliente().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cbxRegiaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxRegiaoActionPerformed
 
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cbxRegiaoActionPerformed
 
     private void valorContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorContaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_valorContaActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void txtAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_txtAnoActionPerformed
 
     private void valorEconomiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorEconomiaActionPerformed
        
@@ -308,9 +331,9 @@ public class telaRegistro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_valorDescontoActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void cbxMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxMesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_cbxMesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -348,10 +371,10 @@ public class telaRegistro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbxMes;
+    private javax.swing.JComboBox<String> cbxRegiao;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -369,8 +392,8 @@ public class telaRegistro extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField txtAno;
+    private javax.swing.JTextField txtKwh;
     private javax.swing.JTextField valorConta;
     private javax.swing.JTextField valorDesconto;
     private javax.swing.JTextField valorEconomia;

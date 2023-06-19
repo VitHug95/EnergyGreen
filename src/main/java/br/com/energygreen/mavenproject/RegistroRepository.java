@@ -13,11 +13,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class UsuarioRepository {
+public class RegistroRepository {
 
     private Connection connection;
 
-    public UsuarioRepository() {
+    public RegistroRepository() {
         // Configurar a conexão com o banco de dados
         String url = "jdbc:mysql://localhost:3306/energygreen";
         String username = "root";
@@ -30,17 +30,18 @@ public class UsuarioRepository {
         }
     }
 
-    public void addUser(Usuario usuario) {
-        String sql = "INSERT INTO usuario (cpf, nome, senha, email, telefone, usertype) VALUES (?, ?, ?, ?, ?, ?)";
-
+    public void addRegis(Registro registro) {
+        String sql = "INSERT INTO usuario (khw, mes, ano, regiao, contaBruta, contaDesconto, economia) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(2, usuario.getCpf());
-            statement.setString(1, usuario.getNome());
-            statement.setString(3, usuario.getSenha());
-            statement.setString(5, usuario.getEmail());
-            statement.setString(4, usuario.getTelefone());
-            statement.setString(6, usuario.getUsertype());                    
+            statement.setInt(1, registro.getKwh());
+            statement.setString(2, registro.getMes());
+            statement.setString(3, registro.getRegiao());
+            statement.setInt(4, registro.getContaBruta());
+            statement.setInt(5, registro.getContaDesconto());
+            statement.setInt(6, registro.getEconomia());
+            statement.setString(7, registro.getAno());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
