@@ -13,15 +13,28 @@ public class calculoConversao {
     private final double consumoMensal;
     private final double tarifaEnergia;
     private final double fatorConversao;
-
-    public calculoConversao (double consumoMensal, double tarifaEnergia, double fatorConversao) {
+    
+    public calculoConversao (double consumoMensal, double fatorConversao) {
         this.consumoMensal = consumoMensal;
-        this.tarifaEnergia = tarifaEnergia;
-        this.fatorConversao = fatorConversao;
+        this.tarifaEnergia = 0.85; //tarifaEnergia ;
+        this.fatorConversao = fatorConversao; //fatorConversao;
     }
 
     public double calcularEconomia() {
         double economia = consumoMensal * tarifaEnergia * fatorConversao;
         return economia;
     }
+    
+    public double calcularTarifaComum(){
+        double tarifaComum = consumoMensal * tarifaEnergia;
+        return tarifaComum;
+    }
+
+    public double calculoConversao() {
+        double tarifaDesconto = (consumoMensal * tarifaEnergia) - calcularEconomia();
+        return tarifaDesconto;
+    }
+    
 }
+
+    
