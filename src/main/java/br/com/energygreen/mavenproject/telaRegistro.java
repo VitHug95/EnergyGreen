@@ -364,7 +364,6 @@ public class telaRegistro extends javax.swing.JFrame {
         String[] conversao3;        
         conversao3 = valorEconomia.getText().split(" ");
         double conv3 = Double.parseDouble(conversao3[1].replace(",", "."));
-        System.out.println(conv3);
         
         Registro novoRegistro = new Registro(kwh, mes, ano, regiao, conv1, conv2, conv3);
         

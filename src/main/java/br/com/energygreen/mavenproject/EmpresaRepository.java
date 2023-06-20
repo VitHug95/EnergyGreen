@@ -31,13 +31,13 @@ public class EmpresaRepository {
     }
 
     public void addEmpresa(Empresa empresa) {
-        String sql = "INSERT INTO empresa (cpf, nome, senha, email, telefone, usertype) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO empresa (cnpj, nome, email, telefone) VALUES (?, ?, ?, ?)";
 
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, empresa.getCnpj());
-            statement.setString(1, empresa.getNome());
-            statement.setString(5, empresa.getEmail());
+            statement.setString(2, empresa.getNome());
+            statement.setString(3, empresa.getEmail());
             statement.setString(4, empresa.getTelefone());                   
             statement.executeUpdate();
         } catch (SQLException e) {

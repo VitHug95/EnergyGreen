@@ -42,9 +42,11 @@ public class RegistroRepository {
             statement.setDouble(6, registro.getContaDesconto());
             statement.setDouble(7, registro.getEconomia());
             statement.setInt(3, registro.getAno());
+            //statement.setString(8, usuario.getCpf());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 }
