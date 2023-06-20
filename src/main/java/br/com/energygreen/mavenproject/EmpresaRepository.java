@@ -13,11 +13,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class RegistroRepository {
+public class EmpresaRepository {
 
     private Connection connection;
 
-    public RegistroRepository() {
+    public EmpresaRepository() {
         // Configurar a conexão com o banco de dados
         String url = "jdbc:mysql://localhost:3306/energygreen";
         String username = "root";
@@ -30,21 +30,19 @@ public class RegistroRepository {
         }
     }
 
-    public void addRegis(Registro registro) {
-        String sql = "INSERT INTO registro (kwh, mes, ano, regiao, contaBruta, contaDesconto, economia) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        
+    public void addEmpresa(Empresa empresa) {
+        String sql = "INSERT INTO empresa (cpf, nome, senha, email, telefone, usertype) VALUES (?, ?, ?, ?, ?, ?)";
+
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setDouble(1, registro.getKwh());
-            statement.setInt(2, registro.getMes());
-            statement.setString(4, registro.getRegiao());
-            statement.setDouble(5, registro.getContaBruta());
-            statement.setDouble(6, registro.getContaDesconto());
-            statement.setDouble(7, registro.getEconomia());
-            statement.setInt(3, registro.getAno());
+            statement.setString(1, empresa.getCnpj());
+            statement.setString(1, empresa.getNome());
+            statement.setString(5, empresa.getEmail());
+            statement.setString(4, empresa.getTelefone());                   
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 }

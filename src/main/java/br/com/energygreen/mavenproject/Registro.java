@@ -10,15 +10,15 @@ package br.com.energygreen.mavenproject;
  */
 public class Registro {
     
-    private int kwh;
-    private String mes;
-    private String ano;
+    private double kwh;
+    private int mes;
+    private int ano;
     private String regiao;
-    private int contaBruta;
-    private int contaDesconto;
-    private int economia;
+    private double contaBruta;
+    private double contaDesconto;
+    private double economia;
 
-    public Registro(int kwh, String mes, String regiao, int contaBruta, int contaDesconto, int economia, String ano) {
+    public Registro(double kwh, int mes, int ano, String regiao, double contaBruta, double contaDesconto, double economia) {
         this.kwh = kwh;
         this.mes = mes;
         this.regiao = regiao;
@@ -28,19 +28,19 @@ public class Registro {
         this.ano = ano;
     }
 
-    public int getKwh() {
+    public double getKwh() {
         return kwh;
     }
 
-    public String getMes() {
+    public int getMes() {
         return mes;
     }
 
-    public void setAno(String ano) {
+    public void setAno(int ano) {
         this.ano = ano;
     }
 
-    public String getAno() {
+    public int getAno() {
         return ano;
     }
 
@@ -48,23 +48,23 @@ public class Registro {
         return regiao;
     }
 
-    public int getContaBruta() {
+    public double getContaBruta() {
         return contaBruta;
     }
 
-    public int getContaDesconto() {
+    public double getContaDesconto() {
         return contaDesconto;
     }
 
-    public int getEconomia() {
+    public double getEconomia() {
         return economia;
     }
 
-    public void setKwh(int kwh) {
+    public void setKwh(double kwh) {
         this.kwh = kwh;
     }
 
-    public void setMes(String mes) {
+    public void setMes(int mes) {
         this.mes = mes;
     }
 
@@ -72,15 +72,15 @@ public class Registro {
         this.regiao = regiao;
     }
 
-    public void setContaBruta(int contaBruta) {
+    public void setContaBruta(double contaBruta) {
         this.contaBruta = contaBruta;
     }
 
-    public void setContaDesconto(int contaDesconto) {
+    public void setContaDesconto(double contaDesconto) {
         this.contaDesconto = contaDesconto;
     }
 
-    public void setEconomia(int economia) {
+    public void setEconomia(double economia) {
         this.economia = economia;
     }
     

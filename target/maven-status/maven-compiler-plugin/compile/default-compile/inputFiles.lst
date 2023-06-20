@@ -1,3 +1,4 @@
+/Users/vitoralmeida/Documents/Projetos/EnergyGreen/src/main/java/br/com/energygreen/mavenproject/Empresa.java
 /Users/vitoralmeida/Documents/Projetos/EnergyGreen/src/main/java/br/com/energygreen/mavenproject/Registro.java
 /Users/vitoralmeida/Documents/Projetos/EnergyGreen/src/main/java/br/com/energygreen/mavenproject/telaLogin.java
 /Users/vitoralmeida/Documents/Projetos/EnergyGreen/src/main/java/br/com/energygreen/mavenproject/telaConsulta.java
@@ -6,8 +7,11 @@
 /Users/vitoralmeida/Documents/Projetos/EnergyGreen/src/main/java/br/com/energygreen/mavenproject/RegistroRepository.java
 /Users/vitoralmeida/Documents/Projetos/EnergyGreen/src/main/java/br/com/energygreen/mavenproject/TelaColaborador.java
 /Users/vitoralmeida/Documents/Projetos/EnergyGreen/src/main/java/br/com/energygreen/mavenproject/telaCadastro.java
+/Users/vitoralmeida/Documents/Projetos/EnergyGreen/src/main/java/br/com/energygreen/mavenproject/telaCadEmpresas.java
+/Users/vitoralmeida/Documents/Projetos/EnergyGreen/src/main/java/br/com/energygreen/mavenproject/telaClientesCad.java
 /Users/vitoralmeida/Documents/Projetos/EnergyGreen/src/main/java/br/com/energygreen/mavenproject/telaAdmin.java
 /Users/vitoralmeida/Documents/Projetos/EnergyGreen/src/main/java/br/com/energygreen/mavenproject/calculoConversao.java
+/Users/vitoralmeida/Documents/Projetos/EnergyGreen/src/main/java/br/com/energygreen/mavenproject/EmpresaRepository.java
 /Users/vitoralmeida/Documents/Projetos/EnergyGreen/src/main/java/br/com/energygreen/mavenproject/UsuarioRepository.java
 /Users/vitoralmeida/Documents/Projetos/EnergyGreen/src/main/java/br/com/energygreen/mavenproject/telaCliente.java
 /Users/vitoralmeida/Documents/Projetos/EnergyGreen/src/main/java/br/com/energygreen/mavenproject/telaRegistro.java
