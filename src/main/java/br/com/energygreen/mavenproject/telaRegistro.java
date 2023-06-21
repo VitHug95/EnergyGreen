@@ -303,7 +303,8 @@ public class telaRegistro extends javax.swing.JFrame {
             }
         }
         
-        try {       
+        try {
+        
         calculoConversao a = new calculoConversao(Double.parseDouble(txtKwh.getText()), fator);
         double b = a.calcularEconomia();
         valorEconomia.setText(String.format("R$ %.2f",b));
@@ -323,7 +324,8 @@ public class telaRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        dispose();
+        new telaMenu().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbxRegiaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxRegiaoActionPerformed
@@ -352,11 +354,16 @@ public class telaRegistro extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
+        DataInfo dataInfo = DataInfo.getInstance();
+        
+        String _ano = txtAno.getText();
+        int _mes = cbxMes.getSelectedIndex();
+        String data = _ano + "-" + _mes + "-01";
+        
         double kwh = Double.parseDouble(txtKwh.getText());
-        int mes = cbxMes.getSelectedIndex();
-        int ano = Integer.parseInt(txtAno.getText());
+        //String mes = cbxMes.getSelectedItem().toString();
         String regiao = cbxRegiao.getSelectedItem().toString();
-        String cpf = null;
+        String cpf = dataInfo.getUsuarioLogado().getCpf();
         
         String[] conversao1;        
         conversao1 = valorConta.getText().split(" ");
@@ -370,7 +377,7 @@ public class telaRegistro extends javax.swing.JFrame {
         conversao3 = valorEconomia.getText().split(" ");
         double conv3 = Double.parseDouble(conversao3[1].replace(",", "."));
         
-        Registro novoRegistro = new Registro(kwh, mes, ano, regiao, conv1, conv2, conv3,cpf);
+        Registro novoRegistro = new Registro(kwh, data, regiao, conv1, conv2, conv3,cpf);
         
         int resposta = JOptionPane.showConfirmDialog(null, "Deseja salvar o registro?", "Confirmação", JOptionPane.YES_NO_OPTION);
     

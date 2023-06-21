@@ -6,6 +6,7 @@ package br.com.energygreen.mavenproject;
 
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,54 +16,64 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
+import java.time.LocalDate;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author vitor
  */
+
 public class telaConsulta extends javax.swing.JFrame {
-
-    private Object jPanel1;
-
-    /**
-     * Creates new form telaConsulta
-     */
+    
+    DefaultTableModel copiaResult;
+    
     public telaConsulta() throws SQLException {
         initComponents();
         
-        //String cpf = null;
-        //String senha = null;
+        DataInfo dataInfo = DataInfo.getInstance();
+        String cpf = dataInfo.getUsuarioLogado().getCpf();
         
-        //String url = "jdbc:mysql://localhost:3306/energygreen";
-        //String dbUsername = "root";
-        //String dbPassword = "m6230ghz";
-        //String sql = "SELECT * FROM registro WHERE cpf = ? AND senha = ?";
+        String url = "jdbc:mysql://localhost:3306/energygreen";
+        String dbUsername = "root";
+        String dbPassword = "m6230ghz";
+        String sql = "SELECT id, kwh, mes, regiao, contaBruta, contaDesconto, economia FROM registro WHERE cpf = ?";
 
-        //try (Connection connection = DriverManager.getConnection(url, dbUsername, dbPassword);
-        // PreparedStatement statement = connection.prepareStatement(sql)) {
-        //statement.setString(1, cpf);
-        //statement.setString(2, senha);
+        try (Connection connection = DriverManager.getConnection(url, dbUsername, dbPassword);
+        PreparedStatement statement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)) {
+        statement.setString(1, cpf);
     
-        //ResultSet resultSet = statement.executeQuery();
+        ResultSet resultSet = statement.executeQuery();
         
-        //Object[][] data = {
-                //{"1", "John Doe", "30"},
-                //{"2", "Jane Smith", "25"},
-                //{"3", "Bob Johnson", "35"}
-            //};
+        // Obter o número de colunas no ResultSet
+            int numColumns = resultSet.getMetaData().getColumnCount();
 
-            // Cabeçalho da tabela
-            //Object[] columnNames = {"ID", "Nome", "Idade"};
-
-            // Criação do modelo de tabela
-            //DefaultTableModel model = new DefaultTableModel(data, columnNames);
-
-            // Criação da tabela
-            //JTable table = new JTable(model);
-
-            //rivate void initComponents() {
-            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    //}
+            // Contar o número de linhas no ResultSet
+            int numLinhas = 0;
+            if (resultSet.last()) {
+                numLinhas = resultSet.getRow();
+                resultSet.beforeFirst();
+            }
+        
+        Object[][] data = new Object[numLinhas][numColumns];
+        
+        
+            // Preencher o array com os dados do ResultSet
+            int linha = 0;
+            while (resultSet.next()) {
+                for (int coluna = 0; coluna < numColumns; coluna++) {
+                    data[linha][coluna] = resultSet.getObject(coluna + 1);
+                }
+                linha++;
+            }
+            
+            Object[] nomColunas = {"Id","Kwh", "Data", "Região", "Valor Bruto", "Conta Desconto", "Economia"};
+            
+            DefaultTableModel model = new DefaultTableModel(data, nomColunas);
+            copiaResult = model;
+            jTable1.setModel(model);
+        }
     }
 
     /**
@@ -75,27 +86,22 @@ public class telaConsulta extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel4 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jFormattedTextField3 = new javax.swing.JFormattedTextField();
+        txtAnoFim = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        txtAnoIn = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cbxMesIn = new javax.swing.JComboBox<>();
+        cbxMesFim = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel4.setText("Consulta");
-
-        jButton6.setText("Pesquisar");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
 
         jButton1.setText("Voltar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -104,25 +110,30 @@ public class telaConsulta extends javax.swing.JFrame {
             }
         });
 
-        jFormattedTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txtAnoFim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField3ActionPerformed(evt);
+                txtAnoFimActionPerformed(evt);
             }
         });
 
         jLabel7.setText("Insira período final");
 
-        jFormattedTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtAnoIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField2ActionPerformed(evt);
+                txtAnoInActionPerformed(evt);
             }
         });
 
         jLabel6.setText("Insira período inicial");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um mês", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
+        cbxMesIn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um mês", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
+        cbxMesIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxMesInActionPerformed(evt);
+            }
+        });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um mês", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
+        cbxMesFim.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um mês", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,6 +148,27 @@ public class telaConsulta extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jButton2.setText("Mostrar Todos");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Pesquisar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Deletar Registro");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -144,32 +176,37 @@ public class telaConsulta extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
+                        .addGap(39, 39, 39)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(333, 333, 333)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(194, 194, 194)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(34, 34, 34)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton6)
-                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cbxMesFim, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cbxMesIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(31, 31, 31)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(112, 112, 112))))
+                                    .addComponent(txtAnoIn, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtAnoFim, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(240, 240, 240)
-                        .addComponent(jButton1)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                        .addGap(194, 194, 194)
+                        .addComponent(jButton3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4)))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,40 +216,194 @@ public class telaConsulta extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxMesIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAnoIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxMesFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAnoFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
-                .addContainerGap())
+                .addGap(12, 12, 12))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     
+        dispose();
+        new telaMenu().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jFormattedTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField3ActionPerformed
+    private void txtAnoFimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnoFimActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField3ActionPerformed
+    }//GEN-LAST:event_txtAnoFimActionPerformed
 
-    private void jFormattedTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField2ActionPerformed
+    private void txtAnoInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnoInActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField2ActionPerformed
+    }//GEN-LAST:event_txtAnoInActionPerformed
+
+    private void cbxMesInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxMesInActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxMesInActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        DataInfo dataInfo = DataInfo.getInstance();
+        String cpf = dataInfo.getUsuarioLogado().getCpf();
+        
+        String url = "jdbc:mysql://localhost:3306/energygreen";
+        String dbUsername = "root";
+        String dbPassword = "m6230ghz";
+        String sql = "SELECT id, kwh, mes, regiao, contaBruta, contaDesconto, economia FROM registro WHERE cpf = ?";
+
+        try {
+            Connection connection = DriverManager.getConnection(url, dbUsername, dbPassword);
+            PreparedStatement statement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            statement.setString(1, cpf);
+    
+        ResultSet resultSet = statement.executeQuery();
+        
+        // Obter o número de colunas no ResultSet
+            int numColumns = resultSet.getMetaData().getColumnCount();
+
+            // Contar o número de linhas no ResultSet
+            int numLinhas = 0;
+            if (resultSet.last()) {
+                numLinhas = resultSet.getRow();
+                resultSet.beforeFirst();
+            }
+        
+        Object[][] data = new Object[numLinhas][numColumns];
+        
+        
+            // Preencher o array com os dados do ResultSet
+            int linha = 0;
+            while (resultSet.next()) {
+                for (int coluna = 0; coluna < numColumns; coluna++) {
+                    data[linha][coluna] = resultSet.getObject(coluna + 1);
+                }
+                linha++;
+            }
+            
+            Object[] nomColunas = {"Id", "Kwh", "Data", "Região", "Valor Bruto", "Conta Desconto", "Economia"};
+            
+            DefaultTableModel model = new DefaultTableModel(data, nomColunas);
+            copiaResult = model;
+            jTable1.setModel(model);
+        } catch (SQLException ex) {
+            Logger.getLogger(telaConsulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+        
+        if (cbxMesIn.getSelectedIndex()== 0 ) {
+        JOptionPane.showMessageDialog(null, "Selecione o mês fnicial.");
+        return; // Encerrar o método sem continuar o cálculo
+        }
+        
+        if (cbxMesFim.getSelectedIndex()== 0 ) {
+        JOptionPane.showMessageDialog(null, "Selecione o mês final.");
+        return; // Encerrar o método sem continuar o cálculo
+        }
+        
+         if (txtAnoIn.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Selecione o ano inicial.");
+        return; // Encerrar o método sem continuar o cálculo
+        }
+         
+        if (txtAnoFim.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Selecione o ano final.");
+        return; // Encerrar o método sem continuar o cálculo
+        }
+        
+        DataInfo dataInfo = DataInfo.getInstance();
+        String cpf = dataInfo.getUsuarioLogado().getCpf();
+        Date dtInicial = Date.valueOf(txtAnoIn.getText()+ "-" + cbxMesIn.getSelectedIndex() + "-01");
+        Date dtFinal = Date.valueOf(txtAnoFim.getText()+ "-" + cbxMesFim.getSelectedIndex() + "-01");
+        
+        String url = "jdbc:mysql://localhost:3306/energygreen";
+        String dbUsername = "root";
+        String dbPassword = "m6230ghz";
+        String sql = "SELECT id, kwh, mes, regiao, contaBruta, contaDesconto, economia FROM registro WHERE cpf = ? AND mes >= ? AND mes <= ?";
+
+        try {
+            Connection connection = DriverManager.getConnection(url, dbUsername, dbPassword);
+            PreparedStatement statement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            statement.setString(1, cpf);
+            statement.setDate(2, dtInicial);
+            statement.setDate(3, dtFinal);
+    
+            ResultSet resultSet = statement.executeQuery();
+        
+            // Obter o número de colunas no ResultSet
+            int numColumns = resultSet.getMetaData().getColumnCount();
+
+            // Contar o número de linhas no ResultSet
+            int numLinhas = 0;
+            if (resultSet.last()) {
+                numLinhas = resultSet.getRow();
+                resultSet.beforeFirst();
+            }
+        
+            Object[][] data = new Object[numLinhas][numColumns];
+        
+            // Preencher o array com os dados do ResultSet
+            int linha = 0;
+            while (resultSet.next()) {
+                for (int coluna = 0; coluna < numColumns; coluna++) {
+                    data[linha][coluna] = resultSet.getObject(coluna + 1);
+                }
+                linha++;
+            }
+            
+            Object[] nomColunas = {"Id" ,"Kwh", "Data", "Região", "Valor Bruto", "Conta Desconto", "Economia"};
+            
+            DefaultTableModel model = new DefaultTableModel(data, nomColunas);
+            jTable1.setModel(model);
+        } catch (Exception ex) {
+            System.out.println("passou");
+            }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        
+        int linhaSelecionada = jTable1.getSelectedRow();
+        
+        if(linhaSelecionada != -1){                  
+           int resposta = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir o item?", "Confirmação de exclusão", JOptionPane.YES_NO_OPTION);
+           if (resposta == JOptionPane.YES_OPTION) { 
+            try {
+                int id = (int) jTable1.getValueAt(linhaSelecionada, 0);
+                String url = "jdbc:mysql://localhost:3306/energygreen";
+                String dbUsername = "root";
+                String dbPassword = "m6230ghz";
+                String sql = ("DELETE FROM registro WHERE id = ?");
+            
+                Connection connection = DriverManager.getConnection(url, dbUsername, dbPassword);
+                PreparedStatement statement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+                statement.setInt(1, id);
+    
+                statement.executeUpdate();
+                MyTableModel model = new MyTableModel((DefaultTableModel)jTable1.getModel());
+                model.removeRow(linhaSelecionada);
+                                
+            }catch(Exception ex){
+                ex.printStackTrace();
+            }
+        }
+        }   
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,17 +444,19 @@ public class telaConsulta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbxMesFim;
+    private javax.swing.JComboBox<String> cbxMesIn;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField3;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JFormattedTextField txtAnoFim;
+    private javax.swing.JFormattedTextField txtAnoIn;
     // End of variables declaration//GEN-END:variables
 
 }

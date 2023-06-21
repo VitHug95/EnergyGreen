@@ -268,7 +268,8 @@ public class telaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultaActionPerformed
 
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        new telaRegistro().setVisible(true);
     }//GEN-LAST:event_btnRegistroActionPerformed
 
     /**

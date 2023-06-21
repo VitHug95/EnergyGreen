@@ -11,22 +11,20 @@ package br.com.energygreen.mavenproject;
 public class Registro {
     
     private double kwh;
-    private int mes;
-    private int ano;
+    private String mes;
     private String regiao;
     private double contaBruta;
     private double contaDesconto;
     private double economia;
     private String cpf;
 
-    public Registro(double kwh, int mes, int ano, String regiao, double contaBruta, double contaDesconto, double economia, String cpf) {
+    public Registro(double kwh, String mes, String regiao, double contaBruta, double contaDesconto, double economia, String cpf) {
         this.kwh = kwh;
         this.mes = mes;
         this.regiao = regiao;
         this.contaBruta = contaBruta;
         this.contaDesconto = contaDesconto;
         this.economia = economia;
-        this.ano = ano;
         this.cpf = cpf;
     }
 
@@ -42,16 +40,8 @@ public class Registro {
         return kwh;
     }
 
-    public int getMes() {
+    public String getMes() {
         return mes;
-    }
-
-    public void setAno(int ano) {
-        this.ano = ano;
-    }
-
-    public int getAno() {
-        return ano;
     }
 
     public String getRegiao() {
@@ -74,7 +64,7 @@ public class Registro {
         this.kwh = kwh;
     }
 
-    public void setMes(int mes) {
+    public void setMes(String mes) {
         this.mes = mes;
     }
 
