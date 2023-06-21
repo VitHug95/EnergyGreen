@@ -82,7 +82,7 @@ public class telaEmpresas extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        txtApagar = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -92,7 +92,6 @@ public class telaEmpresas extends javax.swing.JFrame {
 
         jLabel3.setText("Empresas");
 
-        jComboBox2.setSelectedIndex(-1);
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -132,10 +131,10 @@ public class telaEmpresas extends javax.swing.JFrame {
 
         jLabel12.setText("Selecione uma Empresa");
 
-        jButton2.setText("Apagar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        txtApagar.setText("Apagar");
+        txtApagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                txtApagarActionPerformed(evt);
             }
         });
 
@@ -157,19 +156,19 @@ public class telaEmpresas extends javax.swing.JFrame {
                                         .addGap(33, 33, 33))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField1)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
                                     .addComponent(jTextField2)
-                                    .addComponent(jTextField4)))
+                                    .addComponent(jTextField4)
+                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(123, 123, 123)
                                 .addComponent(jButton1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2))))
+                                .addComponent(txtApagar))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(268, 268, 268)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -188,20 +187,19 @@ public class telaEmpresas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel11)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(139, Short.MAX_VALUE))
+                    .addComponent(jLabel10)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(txtApagar))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
 
         pack();
@@ -221,31 +219,27 @@ public class telaEmpresas extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+         if (jComboBox2.getSelectedItem() != null && jComboBox2.getSelectedItem() instanceof String) {
         String nome = (String) jComboBox2.getSelectedItem();
-           
-        if (nome != null) {
-        try {
-            // 1. Conectar-se ao banco de dados
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/energygreen", "root", "m6230ghz");
 
-            // 2. Executar a consulta SQL
+        try {
+            // Conectar-se ao banco de dados e executar a consulta
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/energygreen", "root", "m6230ghz");
             String query = "SELECT * FROM empresa WHERE nome = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, nome);
+            ResultSet rs = stmt.executeQuery();
 
-            // 3. Executar a consulta e obter os resultados
-            ResultSet rs = stmt.executeQuery();        
-
-            // 4. Preencher os outros botões com os resultados
+            // Preencher os campos com os resultados
             if (rs.next()) {
-
                 jTextField1.setText(rs.getString("cnpj"));
                 jTextField2.setText(rs.getString("email"));
                 jTextField4.setText(rs.getString("telefone"));
-
             } else {
-                // Nenhum registro encontrado para o CPF fornecido
-                //JOptionPane.showMessageDialog(null, "CNPJ não encontrado!");
+                // Nenhum registro encontrado para o nome fornecido
+                jTextField1.setText("");
+                jTextField2.setText("");
+                jTextField4.setText("");
             }
 
             // Fechar os recursos
@@ -256,17 +250,39 @@ public class telaEmpresas extends javax.swing.JFrame {
             ex.printStackTrace();
             // Tratar exceções de conexão com o banco de dados
         }
-        
-        }   
+    } else {
+        // Nenhum item selecionado no jComboBox2
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField4.setText("");
+    }
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void txtApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApagarActionPerformed
         String cnpj = jTextField1.getText();
-
+        
+        DataInfo dataInfo = DataInfo.getInstance();
+        Usuario usuarioLogado = dataInfo.getUsuarioLogado();
+        
+        switch (usuarioLogado.getUsertype()) {
+            case "Administrador":
+                txtApagar.setEnabled(true);
+                break;
+            case "Colaborador":
+                txtApagar.setEnabled(true);
+                break;
+            case "Cliente":
+                txtApagar.setEnabled(false);
+                break;
+            default:
+                ;
+                break;
+        }
+        
         try {
             // 1. Conectar-se ao banco de dados
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/energygreen", "root", "m6230ghz");
@@ -312,7 +328,7 @@ public class telaEmpresas extends javax.swing.JFrame {
             ex.printStackTrace();
             // Tratar exceções de conexão com o banco de dados
             }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_txtApagarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -352,7 +368,6 @@ public class telaEmpresas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -364,5 +379,6 @@ public class telaEmpresas extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JButton txtApagar;
     // End of variables declaration//GEN-END:variables
 }
