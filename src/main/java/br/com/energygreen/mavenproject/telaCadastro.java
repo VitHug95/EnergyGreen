@@ -214,8 +214,7 @@ public class telaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNome
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        dispose();
-        new telaCliente().setVisible(true);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbxTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTipoActionPerformed
@@ -234,6 +233,12 @@ public class telaCadastro extends javax.swing.JFrame {
          String cpf = txtCPF.getText();
     if (cpf.length() != 11) {
         JOptionPane.showMessageDialog(null, "O CPF deve conter exatamente 11 caracteres!");
+        return; // Encerrar o método sem continuar o cadastro
+    }
+    
+    // Verificar se o CPF já está cadastrado no banco de dados
+    if (usuarioRepository.verificarCPFExistente(cpf)) {
+        JOptionPane.showMessageDialog(null, "CPF já cadastrado no sistema!");
         return; // Encerrar o método sem continuar o cadastro
     }
         

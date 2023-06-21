@@ -256,6 +256,7 @@ public class telaClientCad extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
         String cpf = jTextField1.getText();
 
         try {
@@ -307,8 +308,7 @@ public class telaClientCad extends javax.swing.JFrame {
         } catch (SQLException ex) {
             ex.printStackTrace();
             // Tratar exceções de conexão com o banco de dados
-        }
-
+            }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -363,7 +363,7 @@ public class telaClientCad extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         dispose();
-        new telaAdmin().setVisible(true);
+        new telaMenu().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -418,4 +418,12 @@ public class telaClientCad extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
+
+    private String obterTipoUsuario() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private String obterUsuarioAtual() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

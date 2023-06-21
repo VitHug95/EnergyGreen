@@ -126,6 +126,13 @@ public class telaLogin extends javax.swing.JFrame {
                                         
     String cpf = jTextField1.getText();
     String senha = jPasswordField1.getText();
+    
+    //String email = null;
+    //String telefone = null;
+    //String usertype = null;
+    //String nome = null;
+    //String cpf1;
+    //String senha1;
 
     // Código de validação de login utilizando o banco de dados MySQL
     String url = "jdbc:mysql://localhost:3306/energygreen";
@@ -141,10 +148,18 @@ public class telaLogin extends javax.swing.JFrame {
         ResultSet resultSet = statement.executeQuery();
     
         if (resultSet.next()) {
+            String email = resultSet.getString("email");
+            String telefone = resultSet.getString("telefone");
+            String usertype = resultSet.getString("usertype");
+            String nome = resultSet.getString("nome");
+            String cpf1 = resultSet.getString("cpf");
+            String senha1 = resultSet.getString("senha");
+            Usuario usuario = new Usuario(nome, cpf, senha1, email, telefone, usertype);
+            DataInfo dataInfo = DataInfo.getInstance();
+            dataInfo.setUsuarioLogado(usuario);
             String tipoUsuario = resultSet.getString("usertype");
-            redirecionarUsuario(tipoUsuario); // Chama o método para redirecionar o usuário com base no tipo
-            
-            dispose();
+        dispose();
+            new telaMenu().setVisible(true);          
         } else {
             // Login inválido
             JOptionPane.showMessageDialog(null, "Login inválido. Verifique seu nome de usuário e senha.");
@@ -152,22 +167,7 @@ public class telaLogin extends javax.swing.JFrame {
     } catch (SQLException e) {
         e.printStackTrace();
     }
-}
     
-    private void redirecionarUsuario(String usertype) {
-    switch (usertype) {
-        case "Administrador" -> // Redireciona o usuário para a tela de administrador
-            new telaAdmin().setVisible(true);
-        case "Cliente" -> // Redireciona o usuário para a tela de cliente
-            new telaCliente().setVisible(true);
-        case "Colaborador" -> // Redireciona o usuário para a tela de funcionário
-            new TelaColaborador().setVisible(true);
-        default -> // Tipo de usuário desconhecido
-            JOptionPane.showMessageDialog(null, "Tipo de usuário desconhecido.");
-    
-}
-
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

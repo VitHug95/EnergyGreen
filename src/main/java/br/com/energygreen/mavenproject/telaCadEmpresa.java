@@ -199,7 +199,7 @@ public class telaCadEmpresa extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
-        new telaAdmin().setVisible(true);
+        new telaMenu().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -211,12 +211,18 @@ public class telaCadEmpresa extends javax.swing.JFrame {
             return; // Encerrar o método sem continuar o cadastro
         }
 
-        String cpf = txtCnpj.getText();
-        if (cpf.length() != 14) {
+        String cnpj = txtCnpj.getText();
+        if (cnpj.length() != 14) {
             JOptionPane.showMessageDialog(null, "O CNPJ deve conter exatamente 14 caracteres!");
             return; // Encerrar o método sem continuar o cadastro
         }
-
+        
+        // Verificar se o CNPJ já está cadastrado no banco de dados
+        if (empresaRepository.verificarCNPJExistente(cnpj)) {
+        JOptionPane.showMessageDialog(null, "CPF já cadastrado no sistema!");
+        return; // Encerrar o método sem continuar o cadastro
+        }
+        
         Empresa novoEmpresa = new Empresa(txtCnpj.getText(), txtNom.getText(), txtTelefon.getText(), txtEm.getText());
 
         empresaRepository.addEmpresa(novoEmpresa);

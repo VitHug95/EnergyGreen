@@ -17,8 +17,9 @@ public class Registro {
     private double contaBruta;
     private double contaDesconto;
     private double economia;
+    private String cpf;
 
-    public Registro(double kwh, int mes, int ano, String regiao, double contaBruta, double contaDesconto, double economia) {
+    public Registro(double kwh, int mes, int ano, String regiao, double contaBruta, double contaDesconto, double economia, String cpf) {
         this.kwh = kwh;
         this.mes = mes;
         this.regiao = regiao;
@@ -26,6 +27,15 @@ public class Registro {
         this.contaDesconto = contaDesconto;
         this.economia = economia;
         this.ano = ano;
+        this.cpf = cpf;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public double getKwh() {

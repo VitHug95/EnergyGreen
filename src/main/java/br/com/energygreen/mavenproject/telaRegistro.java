@@ -281,6 +281,11 @@ public class telaRegistro extends javax.swing.JFrame {
         return; // Encerrar o método sem continuar o cálculo
         }
       
+      if(txtAno.getText().isEmpty()){
+          JOptionPane.showMessageDialog(null, "Digite o ano");
+          return;
+      }
+      
       if (cbxRegiao.getSelectedIndex()== 0) {
         JOptionPane.showMessageDialog(null, "Insira uma região.");
         return; // Encerrar o método sem continuar o cálculo
@@ -318,8 +323,7 @@ public class telaRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        dispose();
-        new telaCliente().setVisible(true);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbxRegiaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxRegiaoActionPerformed
@@ -352,6 +356,7 @@ public class telaRegistro extends javax.swing.JFrame {
         int mes = cbxMes.getSelectedIndex();
         int ano = Integer.parseInt(txtAno.getText());
         String regiao = cbxRegiao.getSelectedItem().toString();
+        String cpf = null;
         
         String[] conversao1;        
         conversao1 = valorConta.getText().split(" ");
@@ -365,11 +370,27 @@ public class telaRegistro extends javax.swing.JFrame {
         conversao3 = valorEconomia.getText().split(" ");
         double conv3 = Double.parseDouble(conversao3[1].replace(",", "."));
         
-        Registro novoRegistro = new Registro(kwh, mes, ano, regiao, conv1, conv2, conv3);
+        Registro novoRegistro = new Registro(kwh, mes, ano, regiao, conv1, conv2, conv3,cpf);
         
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja salvar o registro?", "Confirmação", JOptionPane.YES_NO_OPTION);
+    
+    if (resposta == JOptionPane.YES_OPTION) {
         RegistroRepository registroRepository = new RegistroRepository();
         registroRepository.addRegis(novoRegistro);
         
+        // Exibir mensagem de registro realizado
+        JOptionPane.showMessageDialog(null, "Registro realizado com sucesso!");
+        
+        // Limpar os campos após o registro
+        txtKwh.setText("");
+        cbxMes.setSelectedIndex(0);
+        txtAno.setText("");
+        cbxRegiao.setSelectedIndex(0);
+        valorConta.setText("");
+        valorDesconto.setText("");
+        valorEconomia.setText("");
+        }
+    
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

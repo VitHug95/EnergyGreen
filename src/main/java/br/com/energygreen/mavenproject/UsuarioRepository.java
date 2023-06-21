@@ -11,6 +11,7 @@ package br.com.energygreen.mavenproject;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UsuarioRepository {
@@ -29,6 +30,24 @@ public class UsuarioRepository {
             e.printStackTrace();
         }
     }
+        
+    public boolean verificarCPFExistente(String cpf) {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/energygreen", "root", "m6230ghz");
+            String query = "SELECT * FROM usuario WHERE cpf = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, cpf);
+            ResultSet rs = stmt.executeQuery();
+            boolean cpfExistente = rs.next();
+            rs.close();
+            stmt.close();
+            conn.close();
+            return cpfExistente;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false; // Tratar exceções de conexão com o banco de dados adequadamente
+        }
+    } 
 
     public void addUser(Usuario usuario) {
         String sql = "INSERT INTO usuario (cpf, nome, senha, email, telefone, usertype) VALUES (?, ?, ?, ?, ?, ?)";
