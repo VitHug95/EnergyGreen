@@ -409,10 +409,9 @@ public class telaRegistro extends javax.swing.JFrame {
         txtValorConta.setText("");
         txtValorDesconto.setText("");
         txtValorEconomia.setText("");
-        }
     
     }//GEN-LAST:event_jButton2ActionPerformed
-
+}
     /**
      * @param args the command line arguments
      */

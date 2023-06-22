@@ -33,6 +33,7 @@ public class telaMenu extends javax.swing.JFrame {
                 btnCadCliente.setEnabled(true);
                 btnConsulta.setEnabled(true);
                 btnCliente.setEnabled(true);
+                btnConsulReg.setEnabled(true);
                 break;
             case "Colaborador":
                 btnRegistro.setEnabled(false);
@@ -42,6 +43,7 @@ public class telaMenu extends javax.swing.JFrame {
                 btnCadCliente.setEnabled(true);
                 btnConsulta.setEnabled(false);
                 btnCliente.setEnabled(true);
+                btnConsulReg.setEnabled(true);
                 break;
             case "Cliente":
                 btnRegistro.setEnabled(true);
@@ -51,6 +53,7 @@ public class telaMenu extends javax.swing.JFrame {
                 btnCadCliente.setEnabled(false);
                 btnConsulta.setEnabled(true);                
                 btnCliente.setEnabled(false);
+                btnConsulReg.setEnabled(false);
                 break;
             default:
                 ;
@@ -80,6 +83,7 @@ public class telaMenu extends javax.swing.JFrame {
         btnEmpresa = new javax.swing.JButton();
         btnRegistro = new javax.swing.JButton();
         btnConsulta = new javax.swing.JButton();
+        btnConsulReg = new javax.swing.JToggleButton();
 
         jButton4.setText("Perfil");
         jButton4.setToolTipText("");
@@ -165,6 +169,13 @@ public class telaMenu extends javax.swing.JFrame {
             }
         });
 
+        btnConsulReg.setText("Consulta de Registro");
+        btnConsulReg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsulRegActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -173,6 +184,12 @@ public class telaMenu extends javax.swing.JFrame {
                 .addContainerGap(168, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(320, 320, 320))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(342, 342, 342))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnCadEmpresa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCadCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -180,14 +197,9 @@ public class telaMenu extends javax.swing.JFrame {
                             .addComponent(btnCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnConsulta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(153, 153, 153))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(320, 320, 320))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(342, 342, 342))))
+                            .addComponent(btnConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
+                            .addComponent(btnConsulReg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(153, 153, 153))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,19 +208,21 @@ public class telaMenu extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(btnPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnConsulReg, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCadCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCadEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -274,6 +288,15 @@ public class telaMenu extends javax.swing.JFrame {
         new telaRegistro().setVisible(true);
     }//GEN-LAST:event_btnRegistroActionPerformed
 
+    private void btnConsulRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsulRegActionPerformed
+        dispose();
+        try {
+            new telaConsultaRegistro().setVisible(true);        // TODO add your handling code here:
+        } catch (SQLException ex) {
+            Logger.getLogger(telaMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnConsulRegActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -314,6 +337,7 @@ public class telaMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnCadCliente;
     private javax.swing.JButton btnCadEmpresa;
     private javax.swing.JButton btnCliente;
+    private javax.swing.JToggleButton btnConsulReg;
     private javax.swing.JButton btnConsulta;
     private javax.swing.JButton btnEmpresa;
     private javax.swing.JButton btnPerfil;

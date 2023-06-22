@@ -389,7 +389,7 @@ public class telaConsulta extends javax.swing.JFrame {
             DefaultTableModel model = new DefaultTableModel(data, nomColunas);
             jTable1.setModel(model);
         } catch (Exception ex) {
-            System.out.println("passou");
+            
             }
     }//GEN-LAST:event_jButton3ActionPerformed
 
