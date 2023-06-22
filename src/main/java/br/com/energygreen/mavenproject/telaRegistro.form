@@ -102,8 +102,8 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="valorConta" min="-2" pref="140" max="-2" attributes="0"/>
-                                  <Component id="valorEconomia" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <Component id="txtValorConta" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <Component id="txtValorEconomia" min="-2" pref="140" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -114,7 +114,7 @@
                                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                       <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="valorDesconto" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <Component id="txtValorDesconto" min="-2" pref="140" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -189,17 +189,17 @@
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="valorConta" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtValorConta" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="valorEconomia" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtValorEconomia" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="valorDesconto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtValorDesconto" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -272,9 +272,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="valorConta">
+    <Component class="javax.swing.JTextField" name="txtValorConta">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="valorContaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtValorContaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtAno">
@@ -297,14 +297,14 @@
         <Property name="text" type="java.lang.String" value="Valor da Conta"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="valorEconomia">
+    <Component class="javax.swing.JTextField" name="txtValorEconomia">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="valorEconomiaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtValorEconomiaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="valorDesconto">
+    <Component class="javax.swing.JTextField" name="txtValorDesconto">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="valorDescontoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtValorDescontoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel11">

@@ -21,6 +21,11 @@ public class telaRegistro extends javax.swing.JFrame {
      */
     public telaRegistro() {
         initComponents();
+        
+        txtValorConta.setEnabled(false);
+        txtValorDesconto.setEnabled(false);
+        txtValorEconomia.setEnabled(false);
+        
     }
 
     /**
@@ -49,13 +54,13 @@ public class telaRegistro extends javax.swing.JFrame {
         cbxRegiao = new javax.swing.JComboBox<>();
         jButton5 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        valorConta = new javax.swing.JTextField();
+        txtValorConta = new javax.swing.JTextField();
         txtAno = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        valorEconomia = new javax.swing.JTextField();
-        valorDesconto = new javax.swing.JTextField();
+        txtValorEconomia = new javax.swing.JTextField();
+        txtValorDesconto = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         cbxMes = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
@@ -115,9 +120,9 @@ public class telaRegistro extends javax.swing.JFrame {
             }
         });
 
-        valorConta.addActionListener(new java.awt.event.ActionListener() {
+        txtValorConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                valorContaActionPerformed(evt);
+                txtValorContaActionPerformed(evt);
             }
         });
 
@@ -133,15 +138,15 @@ public class telaRegistro extends javax.swing.JFrame {
 
         jLabel10.setText("Valor da Conta");
 
-        valorEconomia.addActionListener(new java.awt.event.ActionListener() {
+        txtValorEconomia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                valorEconomiaActionPerformed(evt);
+                txtValorEconomiaActionPerformed(evt);
             }
         });
 
-        valorDesconto.addActionListener(new java.awt.event.ActionListener() {
+        txtValorDesconto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                valorDescontoActionPerformed(evt);
+                txtValorDescontoActionPerformed(evt);
             }
         });
 
@@ -176,8 +181,8 @@ public class telaRegistro extends javax.swing.JFrame {
                                     .addComponent(jLabel10))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(valorConta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(valorEconomia, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtValorConta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtValorEconomia, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -185,7 +190,7 @@ public class telaRegistro extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addComponent(jButton2))
-                                    .addComponent(valorDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txtValorDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -242,15 +247,15 @@ public class telaRegistro extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(valorConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtValorConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(valorEconomia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtValorEconomia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(valorDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtValorDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
@@ -307,7 +312,7 @@ public class telaRegistro extends javax.swing.JFrame {
         
         calculoConversao a = new calculoConversao(Double.parseDouble(txtKwh.getText()), fator);
         double b = a.calcularEconomia();
-        valorEconomia.setText(String.format("R$ %.2f",b));
+        txtValorEconomia.setText(String.format("R$ %.2f",b));
         } catch(NumberFormatException ex){
             JOptionPane.showMessageDialog(null, "Digite um valor válido para KWh.");            
             
@@ -315,11 +320,11 @@ public class telaRegistro extends javax.swing.JFrame {
         
         calculoConversao calculo = new calculoConversao(Double.parseDouble(txtKwh.getText()), fator);
         double tarifaComum = calculo.calcularTarifaComum();
-        valorConta.setText(String.format("R$ %.2f",tarifaComum));
+        txtValorConta.setText(String.format("R$ %.2f",tarifaComum));
         
         calculoConversao desconto = new calculoConversao (Double.parseDouble(txtKwh.getText()), fator);
         double tarifaDesconto = desconto.calculoConversao();
-        valorDesconto.setText(String.format("R$ %.2f",tarifaDesconto));
+        txtValorDesconto.setText(String.format("R$ %.2f",tarifaDesconto));
         
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -332,21 +337,21 @@ public class telaRegistro extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cbxRegiaoActionPerformed
 
-    private void valorContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorContaActionPerformed
+    private void txtValorContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorContaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_valorContaActionPerformed
+    }//GEN-LAST:event_txtValorContaActionPerformed
 
     private void txtAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAnoActionPerformed
 
-    private void valorEconomiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorEconomiaActionPerformed
+    private void txtValorEconomiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorEconomiaActionPerformed
        
-    }//GEN-LAST:event_valorEconomiaActionPerformed
+    }//GEN-LAST:event_txtValorEconomiaActionPerformed
 
-    private void valorDescontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorDescontoActionPerformed
+    private void txtValorDescontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorDescontoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_valorDescontoActionPerformed
+    }//GEN-LAST:event_txtValorDescontoActionPerformed
 
     private void cbxMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxMesActionPerformed
         // TODO add your handling code here:
@@ -366,15 +371,15 @@ public class telaRegistro extends javax.swing.JFrame {
         String cpf = dataInfo.getUsuarioLogado().getCpf();
         
         String[] conversao1;        
-        conversao1 = valorConta.getText().split(" ");
+        conversao1 = txtValorConta.getText().split(" ");
         double conv1 = Double.parseDouble(conversao1[1].replace(",", "."));
  
         String[] conversao2;        
-        conversao2 = valorDesconto.getText().split(" ");
+        conversao2 = txtValorDesconto.getText().split(" ");
         double conv2 = Double.parseDouble(conversao2[1].replace(",", "."));
         
         String[] conversao3;        
-        conversao3 = valorEconomia.getText().split(" ");
+        conversao3 = txtValorEconomia.getText().split(" ");
         double conv3 = Double.parseDouble(conversao3[1].replace(",", "."));
         
         Registro novoRegistro = new Registro(kwh, data, regiao, conv1, conv2, conv3,cpf);
@@ -393,9 +398,9 @@ public class telaRegistro extends javax.swing.JFrame {
         cbxMes.setSelectedIndex(0);
         txtAno.setText("");
         cbxRegiao.setSelectedIndex(0);
-        valorConta.setText("");
-        valorDesconto.setText("");
-        valorEconomia.setText("");
+        txtValorConta.setText("");
+        txtValorDesconto.setText("");
+        txtValorEconomia.setText("");
         }
     
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -460,8 +465,8 @@ public class telaRegistro extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField txtAno;
     private javax.swing.JTextField txtKwh;
-    private javax.swing.JTextField valorConta;
-    private javax.swing.JTextField valorDesconto;
-    private javax.swing.JTextField valorEconomia;
+    private javax.swing.JTextField txtValorConta;
+    private javax.swing.JTextField txtValorDesconto;
+    private javax.swing.JTextField txtValorEconomia;
     // End of variables declaration//GEN-END:variables
 }
