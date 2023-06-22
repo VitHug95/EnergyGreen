@@ -204,7 +204,7 @@ public class telaClientCad extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         String cpf = jTextField1.getText();
+        String cpf = jTextField1.getText();
         String nome = jTextField2.getText();
         String telefone = jTextField3.getText();
         String email = jTextField4.getText();
@@ -229,6 +229,7 @@ public class telaClientCad extends javax.swing.JFrame {
                 updateStmt.setString(3, email);
                 updateStmt.setString(4, userType);
                 updateStmt.setString(5, cpf);
+                
                 int rowsUpdated = updateStmt.executeUpdate();
 
                 if (rowsUpdated > 0) {

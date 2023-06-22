@@ -26,8 +26,17 @@ public class telaEmpresas extends javax.swing.JFrame {
      */
     public telaEmpresas() {
         initComponents();
+        DataInfo dataInfo = DataInfo.getInstance();
+        Usuario usuarioLogado = dataInfo.getUsuarioLogado();
         
-        
+        switch (usuarioLogado.getUsertype()) {
+        case "Cliente":
+        txtApagar.setEnabled(false);
+        break;
+        default:
+        txtApagar.setEnabled(true);
+        break;
+        }   
           try {
         // 1. Conectar-se ao banco de dados
         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/energygreen", "root", "m6230ghz");
@@ -267,21 +276,6 @@ public class telaEmpresas extends javax.swing.JFrame {
         
         DataInfo dataInfo = DataInfo.getInstance();
         Usuario usuarioLogado = dataInfo.getUsuarioLogado();
-        
-        switch (usuarioLogado.getUsertype()) {
-            case "Administrador":
-                txtApagar.setEnabled(true);
-                break;
-            case "Colaborador":
-                txtApagar.setEnabled(true);
-                break;
-            case "Cliente":
-                txtApagar.setEnabled(false);
-                break;
-            default:
-                ;
-                break;
-        }
         
         try {
             // 1. Conectar-se ao banco de dados
