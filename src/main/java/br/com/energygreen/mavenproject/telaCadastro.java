@@ -17,6 +17,8 @@ public class telaCadastro extends javax.swing.JFrame {
      */
     public telaCadastro() {
         initComponents();
+    setLocationRelativeTo(null);
+    
     }
 
     /**
@@ -36,19 +38,19 @@ public class telaCadastro extends javax.swing.JFrame {
         cbxTipo = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         txtCPF = new javax.swing.JTextField();
-        txtSenha = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         txtTel = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        txtSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel4.setText("Cadastro de Usuário");
 
-        jLabel1.setText("CPF/CNPJ");
+        jLabel1.setText("CPF");
 
         jLabel3.setText("Senha");
 
@@ -68,12 +70,6 @@ public class telaCadastro extends javax.swing.JFrame {
         txtCPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCPFActionPerformed(evt);
-            }
-        });
-
-        txtSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSenhaActionPerformed(evt);
             }
         });
 
@@ -127,12 +123,22 @@ public class telaCadastro extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel2)
                                 .addComponent(jLabel6)
-                                .addComponent(jLabel5))
-                            .addGap(18, 18, 18)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel8)
+                                .addComponent(jLabel1))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cbxTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtEmail)
-                                .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(cbxTipo, 0, 170, Short.MAX_VALUE)
+                                        .addComponent(txtTel)
+                                        .addComponent(txtEmail)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtNome)
+                                        .addComponent(txtSenha)))))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,17 +148,8 @@ public class telaCadastro extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(34, 34, 34)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel8))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                            .addComponent(txtCPF)
-                            .addComponent(txtSenha))))
-                .addContainerGap(217, Short.MAX_VALUE))
+                    .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(194, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,10 +193,6 @@ public class telaCadastro extends javax.swing.JFrame {
     private void txtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFActionPerformed
        
     }//GEN-LAST:event_txtCPFActionPerformed
-
-    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSenhaActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
@@ -308,7 +301,7 @@ public class telaCadastro extends javax.swing.JFrame {
     private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtSenha;
+    private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtTel;
     // End of variables declaration//GEN-END:variables
 }

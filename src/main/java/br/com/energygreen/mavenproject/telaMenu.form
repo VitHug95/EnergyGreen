@@ -63,7 +63,7 @@
                           <Component id="btnCliente" max="32767" attributes="0"/>
                           <Component id="btnPerfil" max="32767" attributes="0"/>
                           <Component id="btnRegistro" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnConsulta" alignment="0" min="-2" pref="446" max="-2" attributes="0"/>
+                          <Component id="btnConsulta" alignment="1" min="-2" pref="446" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
                   </Group>
@@ -88,17 +88,17 @@
               <Component id="btnPerfil" min="-2" pref="38" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnCliente" min="-2" pref="41" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnEmpresa" min="-2" pref="41" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnRegistro" min="-2" pref="45" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnConsulta" min="-2" pref="45" max="-2" attributes="0"/>
-              <EmptySpace pref="19" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnCadCliente" min="-2" pref="41" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnCadEmpresa" min="-2" pref="41" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="43" max="32767" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>

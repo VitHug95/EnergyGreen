@@ -27,6 +27,8 @@ public class telaPerfil extends javax.swing.JFrame {
         String cpf = dataInfo.getUsuarioLogado().getCpf();
         txtCPF.setEnabled(false);
         
+        setLocationRelativeTo(null);
+        
         String url = "jdbc:mysql://localhost:3306/energygreen";
         String username = "root";
         String password = "m6230ghz";
